@@ -1,0 +1,17 @@
+- name: install apache and php for Ubuntu
+  apt: 
+      name:
+         - apache2
+         - libapache2-mod-php
+      state: present
+      update_cache: yes
+  when: ansible_distribution == "Ubuntu"
+
+- name: install apache and php for CentOS
+  yum:
+     name:
+        - httpd
+        - php
+     state: present
+     update_cache: yes
+  when: ansible_distribution == "CentOS"
